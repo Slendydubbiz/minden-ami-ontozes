@@ -3,8 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kertkarbantartás | Nyíregyháza és környéke</title>
 <meta name="description" content="Kertkarbantartás Nyíregyházán és környékén: fűnyírás, metszés, kaszálás, szezonális gondozás. Czinke Attila e.v.">
+
+<link rel="canonical" href="https://slendydubbiz.github.io/minden-ami-ontozes/kertkarbantartas.html">
+<meta name="robots" content="index, follow">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BV7B910S44"></script>
@@ -19,10 +23,24 @@ gtag('config', 'G-BV7B910S44');
 
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f5f5f5;}
-header{background:#1f3d1f;color:white;padding:20px;text-align:center;}
+header{background:#1f3d1f;color:white;padding:30px 20px;text-align:center;}
 header img{max-width:200px;display:block;margin:0 auto 10px;}
-nav{background:#2e7d32;display:flex;justify-content:center;flex-wrap:wrap;}
-nav a{color:white;padding:15px 20px;text-decoration:none;font-weight:bold;}
+
+nav{
+background:#2e7d32;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:50;
+}
+nav a{
+color:white;
+padding:15px 20px;
+text-decoration:none;
+font-weight:bold;
+}
 nav a:hover{background:#1b5e20;}
 
 .hero{padding:50px 20px;text-align:center;background:white;}
@@ -34,7 +52,7 @@ display:inline-block;
 padding:14px 24px;
 background:#2e7d32;
 color:white;
-border-radius:6px;
+border-radius:8px;
 text-decoration:none;
 margin:10px;
 font-weight:bold;
@@ -49,7 +67,33 @@ border-radius:12px;
 box-shadow:0 5px 20px rgba(0,0,0,0.08);
 margin-bottom:30px;
 }
+
 footer{background:#1f3d1f;color:white;text-align:center;padding:20px;margin-top:40px;}
+
+/* lebegő hívás gomb */
+.floating-call{
+position:fixed;
+bottom:18px;
+right:18px;
+background:#2e7d32;
+color:#fff;
+width:64px;
+height:64px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+text-decoration:none;
+z-index:9999;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+animation:pulse 1.6s infinite;
+}
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(46,125,50,.55);}
+70%{box-shadow:0 0 0 18px rgba(46,125,50,0);}
+100%{box-shadow:0 0 0 0 rgba(46,125,50,0);}
+}
 </style>
 </head>
 
@@ -57,15 +101,17 @@ footer{background:#1f3d1f;color:white;text-align:center;padding:20px;margin-top:
 
 <header>
 <img src="logo.png" alt="Minden ami öntözés logó">
-<h2>Minden ami öntözés és kert karbantartás</h2>
-<p>Czinke Attila e.v.</p>
+<h2>Czinke Attila e.v.</h2>
+<p>Öntözőrendszer telepítés • Kertkarbantartás • Zöld fal • Nyíregyháza és környéke</p>
 </header>
 
 <nav>
 <a href="index.html">Főoldal</a>
 <a href="ontozorendszer.html">Öntözőrendszer</a>
 <a href="kertkarbantartas.html">Kertkarbantartás</a>
-<a href="zoldfal.html">Zöldfal</a>
+<a href="zoldfal.html">Zöld fal</a>
+<a href="index.html#idopont">Időpont kérés</a>
+<a href="index.html#kapcsolat">Kapcsolat</a>
 </nav>
 
 <section class="hero">
@@ -73,7 +119,7 @@ footer{background:#1f3d1f;color:white;text-align:center;padding:20px;margin-top:
 <p>Nyíregyházán és környékén, kiszállással.</p>
 
 <a class="button" href="tel:+36501267123">Hívás most</a>
-<a class="button" href="mailto:czinke.attila79@gmail.com">Email küldése</a>
+<a class="button" href="index.html#idopont">Időpont kérés</a>
 </section>
 
 <section class="section">
@@ -89,12 +135,13 @@ footer{background:#1f3d1f;color:white;text-align:center;padding:20px;margin-top:
 </ul>
 
 <p style="margin-top:18px;">
-A zöldfal szolgáltatás külön oldalon érhető el: <a href="zoldfal.html"><strong>Legő zöldfal</strong></a>.
+A zöldfal szolgáltatás külön oldalon érhető el: 
+<a href="zoldfal.html"><strong>Zöld fal</strong></a>.
 </p>
 </div>
 
 <div class="card">
-<h2>Kapcsolat</h2>
+<h2 id="kapcsolat">Kapcsolat</h2>
 <p><strong>Név:</strong> Czinke Attila e.v.</p>
 <p><strong>Email:</strong> <a href="mailto:czinke.attila79@gmail.com">czinke.attila79@gmail.com</a></p>
 <p><strong>Telefon:</strong>
@@ -108,8 +155,10 @@ A zöldfal szolgáltatás külön oldalon érhető el: <a href="zoldfal.html"><s
 </section>
 
 <footer>
-© 2026 Minden ami öntözés és kert karbantartás | Kertkarbantartás
+© 2026 Czinke Attila e.v. | Kertkarbantartás
 </footer>
+
+<a href="tel:+36501267123" class="floating-call" aria-label="Hívás">📞</a>
 
 </body>
 </html>
