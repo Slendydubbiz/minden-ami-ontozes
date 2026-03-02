@@ -82,6 +82,19 @@
     }
     nav a:hover{ background:var(--green-hover); }
 
+    /* ✅ HOZZÁADVA: fix menü osztály + árnyék + teljes szélesség */
+    nav.is-fixed{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:99999;
+      box-shadow:0 10px 25px rgba(0,0,0,.18);
+    }
+    /* ✅ HOZZÁADVA: helykitöltő a fix nav alá, hogy ne ugorjon a tartalom */
+    #nav-spacer{ height:0; }
+    /* ✅ /HOZZÁADVA */
+
     .wrap{
       max-width:1100px;
       margin:0 auto;
@@ -238,7 +251,8 @@
     <p>Czinke Attila e.v. • Nyíregyháza és környéke</p>
   </header>
 
-  <nav>
+  <!-- ✅ HOZZÁADVA: id a nav-ra -->
+  <nav id="mainNav">
     <a href="index.html">Főoldal</a>
     <a href="ontozorendszer.html">Öntözőrendszer</a>
     <a href="kertkarbantartas.html">Kertkarbantartás</a>
@@ -248,6 +262,9 @@
     <a href="index.html#idopont">Időpont kérés</a>
     <a href="index.html#kapcsolat">Kapcsolat</a>
   </nav>
+
+  <!-- ✅ HOZZÁADVA: helykitöltő a fix menü alá (nem töröl semmit) -->
+  <div id="nav-spacer" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="hero">
@@ -438,5 +455,46 @@
       });
     })();
   </script>
+
+  <!-- ✅ HOZZÁADVA: menü rögzítése (nem tűnik el felül görgetésnél) -->
+  <script>
+    (function(){
+      const nav = document.getElementById('mainNav');
+      const spacer = document.getElementById('nav-spacer');
+      if(!nav || !spacer) return;
+
+      const navTop = nav.getBoundingClientRect().top + window.scrollY;
+
+      function setSpacerHeight(px){
+        spacer.style.height = px + 'px';
+      }
+
+      function onScroll(){
+        const shouldFix = window.scrollY >= navTop;
+        if(shouldFix){
+          if(!nav.classList.contains('is-fixed')){
+            nav.classList.add('is-fixed');
+            setSpacerHeight(nav.offsetHeight);
+          }
+        } else {
+          if(nav.classList.contains('is-fixed')){
+            nav.classList.remove('is-fixed');
+            setSpacerHeight(0);
+          }
+        }
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', function(){
+        if(nav.classList.contains('is-fixed')){
+          setSpacerHeight(nav.offsetHeight);
+        }
+      });
+
+      onScroll();
+    })();
+  </script>
+  <!-- ✅ /HOZZÁADVA -->
+
 </body>
 </html>
