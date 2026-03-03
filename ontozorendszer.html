@@ -241,14 +241,51 @@
       100%{box-shadow:0 0 0 0 rgba(46,125,50,0);}
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Kisebb fejléc + logo bal oldalon (semmi nem lett kivéve) */
+    header{
+      padding:10px 14px;                 /* kisebb magasság */
+      text-align:left;                   /* balra igazítás */
+      display:flex;                      /* logo + szöveg egymás mellett */
+      align-items:center;                /* középre igaz függőlegesen */
+      gap:12px;                          /* kis térköz */
+      min-height:64px;                   /* kb 1-2 cm hatás (képernyőtől függ) */
+      box-sizing:border-box;
+    }
+    header img{
+      width:64px;                        /* kisebb logo */
+      height:64px;                       /* fix magasság */
+      margin:0;                          /* ne legyen középre tolás */
+      flex:0 0 64px;
+    }
+    header h2{
+      margin:0;
+      font-size:16px;
+      line-height:1.1;
+    }
+    header p{
+      margin:2px 0 0 0;
+      font-size:12px;
+      line-height:1.2;
+      opacity:.95;
+    }
+    @media (max-width:480px){
+      header{gap:10px; min-height:60px; padding:10px 12px;}
+      header img{width:56px;height:56px;flex:0 0 56px;}
+      header h2{font-size:14px;}
+      header p{font-size:11px;}
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
 <body>
   <header>
     <img src="logo.png" alt="Czinke Attila e.v. logó" />
-    <h2>Minden ami öntözés és kert karbantartás</h2>
-    <p>Czinke Attila e.v. • Nyíregyháza és környéke</p>
+    <div>
+      <h2>Minden ami öntözés és kert karbantartás</h2>
+      <p>Czinke Attila e.v. • Nyíregyháza és környéke</p>
+    </div>
   </header>
 
   <!-- ✅ HOZZÁADVA: id a nav-ra -->
