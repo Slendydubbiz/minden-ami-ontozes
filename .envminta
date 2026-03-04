@@ -1,0 +1,4 @@
+PORT=3000
+EMAIL_USER=username
+EMAIL_PASS=password
+ADMIN_EMAILS=emails

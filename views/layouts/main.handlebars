@@ -1,0 +1,28 @@
+<html lang="hu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Öntözőrendszer és kertkarbantartás Nyíregyháza | {{contact.name}} e.v.</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/gallery.js"></script>
+    <script src="/js/gametrics.js" defer></script>
+    <script src="/js/menu.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const lightbox = GLightbox({
+          selector: '.glightbox'
+        });
+      });
+    </script>
+  </head>
+  <body>
+    {{> layout/header}}
+    {{> layout/navbar}}
+    {{{body}}}
+    {{> layout/footer}}
+    {{> layout/floating}}
+  </body>
+</html>

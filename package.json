@@ -1,0 +1,19 @@
+{
+  "name": "minden-ami-ontozes",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "hb3nce04",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-handlebars": "^8.0.6",
+    "nodemailer": "^8.0.1",
+    "nodemon": "^3.1.14"
+  }
+}
