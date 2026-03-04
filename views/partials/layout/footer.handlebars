@@ -1,0 +1,9 @@
+<footer>©
+  <span id="current-year"></span>
+  {{contact.name}}
+  e.v. - {{contact.slogen}} -
+  {{contact.email_address}}</footer>
+<script>
+  const yearElement = document.getElementById('current-year'); if (yearElement)
+  { yearElement.textContent = new Date().getFullYear(); }
+</script>

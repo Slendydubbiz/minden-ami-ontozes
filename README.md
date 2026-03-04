@@ -1,1 +1,0 @@
-# minden-ami-ontozes
