@@ -275,6 +275,98 @@
       header p{font-size:11px;}
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Hero szöveg + sorkizárás (ugyanaz az elv mint öntözésnél) */
+    .hero .hero-text{
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+    .hero .hero-text p{
+      margin: 0 0 12px;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      word-break: normal;
+      overflow-wrap: anywhere;
+    }
+    .hero .hero-text p:last-child{ margin-bottom:0; }
+
+    .hero details.readmore{
+      max-width: 920px;
+      margin: 10px auto 0;
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(46,125,50,.05);
+      overflow: hidden;
+    }
+    .hero details.readmore > summary{
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 800;
+      color: var(--green-dark);
+      list-style: none;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .hero details.readmore > summary::-webkit-details-marker{ display:none; }
+    .hero details.readmore > summary::before{
+      content:"▸";
+      font-size: 18px;
+      line-height: 1;
+      transform: translateY(-1px);
+      transition: transform .15s ease;
+    }
+    .hero details.readmore[open] > summary::before{
+      content:"▾";
+    }
+    .hero details.readmore .hero-text{
+      padding: 12px 14px 14px;
+      margin: 0 auto;
+    }
+    /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Referencia nyilas lenyitás (képek csak nyitás után) */
+    #referenciak{ display:none; } /* alapból elrejtjük, és lenyitáskor JS megjeleníti */
+
+    details.refbox{
+      margin-top:22px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    details.refbox > summary{
+      cursor:pointer;
+      padding:16px 16px;
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+      list-style:none;
+      color:#111;
+    }
+    details.refbox > summary::-webkit-details-marker{ display:none; }
+    details.refbox > summary::before{
+      content:"▸";
+      font-size:18px;
+      line-height:1;
+      transform: translateY(-1px);
+      transition: transform .15s ease;
+      color: var(--green-dark);
+    }
+    details.refbox[open] > summary::before{
+      content:"▾";
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -297,18 +389,48 @@
     <a href="index.html#kapcsolat">Kapcsolat</a>
   </nav>
 
-  <!-- ✅ HOZZÁADVA: helykitöltő a fix menü alá (nem töröl semmit) -->
+  <!-- ✅ HOZZÁADVA: helykitöltő a fix nav alá (nem töröl semmit) -->
   <div id="nav-spacer" aria-hidden="true"></div>
 
   <div class="wrap">
     <div class="hero">
+
+      <!-- ✅ HOZZÁADVA: Gombok a cím fölé (nem vettünk ki semmit, az eredeti lent is megmarad) -->
+      <div class="buttons">
+        <a class="button" href="tel:+36501267123">Hívás: +36 50 126 7123</a>
+        <a class="button" href="index.html#idopont">Időpontfoglalás</a>
+      </div>
+      <!-- ✅ /HOZZÁADVA -->
+
       <h1>Kertkarbantartás</h1>
       <p>Fűnyírás • Metszés • Kaszálás • Szezonális gondozás • Általános kert rendbetétel</p>
+
+      <!-- ✅ HOZZÁADVA: Lenyitható bemutatkozó szöveg (2017 óta) -->
+      <details class="readmore">
+        <summary>Olvass többet a kertkarbantartásról és a kertépítésről</summary>
+        <div class="hero-text">
+          <p>Cégünk <strong>2017 óta</strong> foglalkozik <strong>kertkarbantartással</strong>, valamint <strong>kerttervezéssel és teljes körű kertépítéssel</strong> Nyíregyházán és környékén. Célunk, hogy ügyfeleink számára esztétikus, rendezett és hosszú távon is jól működő kerteket alakítsunk ki – legyen szó családi házak kertjeiről, társasházi zöldterületekről vagy nagyobb udvarokról.</p>
+
+          <p>A munka minden esetben <strong>szakszerű felméréssel és átgondolt tervezéssel</strong> indul: figyelembe vesszük a terület adottságait, a talajviszonyokat, a fény- és vízigényt, valamint az Ön elképzeléseit. A kivitelezés során kiemelt figyelmet fordítunk a <strong>minőségi alapanyagokra</strong> és a <strong>precíz munkavégzésre</strong>, hogy a végeredmény ne csak szép, hanem praktikus és fenntartható is legyen.</p>
+
+          <p>Kertkarbantartási szolgáltatásainkat <strong>megbízhatóan és rendszeresen</strong> végezzük: fűnyírás, szegélyezés, gyommentesítés, sövény- és bokornyírás, metszés, ágyások rendbetétele, valamint szezonális kerti feladatok. Igény szerint <strong>alkalmi vagy rendszeres</strong> (heti/havi) gondozást is vállalunk, hogy kertje egész évben ápolt és rendezett képet mutasson.</p>
+
+          <p>Tapasztalatunkkal és ügyfélközpontú hozzáállásunkkal arra törekszünk, hogy a kert ne gond legyen, hanem öröm: <strong>egy igényes, élhető zöld tér</strong>, amit jó használni és jó ránézni.</p>
+        </div>
+      </details>
+      <!-- ✅ /HOZZÁADVA -->
+
       <div class="buttons">
         <a class="button" href="tel:+36501267123">Hívás: +36 50 126 7123</a>
         <a class="button" href="index.html#idopont">Időpontfoglalás</a>
       </div>
     </div>
+
+    <!-- ✅ HOZZÁADVA: Referencia lenyitható sor (a képek csak nyitás után jelennek meg) -->
+    <details class="refbox" id="refToggle">
+      <summary>Referencia képek megtekintéséhez nyomja meg a nyilat</summary>
+    </details>
+    <!-- ✅ /HOZZÁADVA -->
 
     <section class="section" id="referenciak">
       <h2>Referencia munkák – Kertkarbantartás (11 kép)</h2>
@@ -620,6 +742,23 @@
       });
     })();
   </script>
+
+  <!-- ✅ HOZZÁADVA: Referenciák csak lenyitás után (nem vettünk ki semmit, csak vezérlés) -->
+  <script>
+    (function(){
+      const toggle = document.getElementById('refToggle');
+      const section = document.getElementById('referenciak');
+      if(!toggle || !section) return;
+
+      function sync(){
+        section.style.display = toggle.open ? '' : 'none';
+      }
+
+      toggle.addEventListener('toggle', sync);
+      sync();
+    })();
+  </script>
+  <!-- ✅ /HOZZÁADVA -->
 
   <!-- ✅ HOZZÁADVA: menü rögzítése (sticky helyett fix fallback) -->
   <script>
