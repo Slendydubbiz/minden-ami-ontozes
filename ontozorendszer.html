@@ -127,6 +127,18 @@
     }
     /* ✅ /HOZZÁADVA */
 
+    /* ✅ HOZZÁADVA: Sorkizárt szöveg (bal+jobb oldal egyenesen), hogy minden sor "egyformán" zárjon */
+    .hero .hero-text p{
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      word-break: normal;
+      overflow-wrap: anywhere;
+    }
+    /* ✅ /HOZZÁADVA */
+
     /* ✅ HOZZÁADVA: Lenyitható (nyilas) rész stílus */
     .hero details.readmore{
       max-width: 920px;
