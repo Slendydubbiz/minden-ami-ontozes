@@ -178,6 +178,44 @@
     }
     /* ✅ /HOZZÁADVA */
 
+    /* ✅ HOZZÁADVA: Referencia lenyitható doboz (ugyanaz a stílus, csak külön class) */
+    details.refbox{
+      margin-top:22px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    details.refbox > summary{
+      cursor:pointer;
+      padding:16px 16px;
+      font-weight:800;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+      list-style:none;
+      color:#111;
+    }
+    details.refbox > summary::-webkit-details-marker{ display:none; }
+    details.refbox > summary::before{
+      content:"▸";
+      font-size:18px;
+      line-height:1;
+      transform: translateY(-1px);
+      transition: transform .15s ease;
+      color: var(--green-dark);
+    }
+    details.refbox[open] > summary::before{
+      content:"▾";
+    }
+    details.refbox .section{
+      margin-top:0;            /* a details adja a “kártyát”, ne legyen duplán */
+      box-shadow:none;         /* ne legyen duplán */
+      border-radius:0;         /* ne legyen duplán */
+    }
+    /* ✅ /HOZZÁADVA */
+
     .buttons{
       display:flex;
       gap:10px;
@@ -400,28 +438,34 @@
       </div>
     </div>
 
-    <section class="section" id="referenciak">
-      <h2>Referenciamunkák – Öntözés (2 kép)</h2>
-      <p>Kattints a képre a nagyításhoz.</p>
+    <!-- ✅ HOZZÁADVA: Referencia képek lenyitható rész (a képek csak nyitás után látszanak) -->
+    <details class="refbox" id="referenciak">
+      <summary>Referencia képek megtekintéséhez nyomja meg a nyilat</summary>
 
-      <div class="gallery" id="gallery">
-        <!-- 1 -->
-        <a class="gitem" href="#" data-full-jpg="assets/ontozo/ontozo-01.jpg" data-full-webp="assets/ontozo/ontozo-01.webp" aria-label="Öntözés referencia 1">
-          <picture>
-            <source type="image/webp" srcset="assets/ontozo/thumbs/ontozo-01.webp">
-            <img loading="lazy" decoding="async" src="assets/ontozo/thumbs/ontozo-01.jpg" alt="Öntözés referencia 1" width="520" height="520">
-          </picture>
-        </a>
+      <section class="section">
+        <h2>Referenciamunkák – Öntözés (2 kép)</h2>
+        <p>Kattints a képre a nagyításhoz.</p>
 
-        <!-- 2 -->
-        <a class="gitem" href="#" data-full-jpg="assets/ontozo/ontozo-02.jpg" data-full-webp="assets/ontozo/ontozo-02.webp" aria-label="Öntözés referencia 2">
-          <picture>
-            <source type="image/webp" srcset="assets/ontozo/thumbs/ontozo-02.webp">
-            <img loading="lazy" decoding="async" src="assets/ontozo/thumbs/ontozo-02.jpg" alt="Öntözés referencia 2" width="520" height="520">
-          </picture>
-        </a>
-      </div>
-    </section>
+        <div class="gallery" id="gallery">
+          <!-- 1 -->
+          <a class="gitem" href="#" data-full-jpg="assets/ontozo/ontozo-01.jpg" data-full-webp="assets/ontozo/ontozo-01.webp" aria-label="Öntözés referencia 1">
+            <picture>
+              <source type="image/webp" srcset="assets/ontozo/thumbs/ontozo-01.webp">
+              <img loading="lazy" decoding="async" src="assets/ontozo/thumbs/ontozo-01.jpg" alt="Öntözés referencia 1" width="520" height="520">
+            </picture>
+          </a>
+
+          <!-- 2 -->
+          <a class="gitem" href="#" data-full-jpg="assets/ontozo/ontozo-02.jpg" data-full-webp="assets/ontozo/ontozo-02.webp" aria-label="Öntözés referencia 2">
+            <picture>
+              <source type="image/webp" srcset="assets/ontozo/thumbs/ontozo-02.webp">
+              <img loading="lazy" decoding="async" src="assets/ontozo/thumbs/ontozo-02.jpg" alt="Öntözés referencia 2" width="520" height="520">
+            </picture>
+          </a>
+        </div>
+      </section>
+    </details>
+    <!-- ✅ /HOZZÁADVA -->
   </div>
 
   <!-- Lightbox -->
