@@ -334,7 +334,7 @@
     /* ✅ /HOZZÁADVA */
 
     /* ✅ HOZZÁADVA: Referencia nyilas lenyitás (képek csak nyitás után) */
-    #referenciak{ display:none; } /* alapból elrejtjük, és lenyitáskor JS megjeleníti */
+    #referenciak{ display:none; } /* alapból elrejtjük, és lenyitáskor megjelenítjük */
 
     details.refbox{
       margin-top:22px;
@@ -367,6 +367,10 @@
       content:"▾";
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: JAVÍTÁS – akkor is jelenjen meg a referencia szekció, ha a JS valamiért nem fut le */
+    #refToggle[open] + #referenciak{ display:block; }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -389,7 +393,7 @@
     <a href="index.html#kapcsolat">Kapcsolat</a>
   </nav>
 
-  <!-- ✅ HOZZÁADVA: helykitöltő a fix nav alá (nem töröl semmit) -->
+  <!-- ✅ HOZZÁADVA: helykitöltő a fix menü alá (nem töröl semmit) -->
   <div id="nav-spacer" aria-hidden="true"></div>
 
   <div class="wrap">
