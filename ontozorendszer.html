@@ -127,6 +127,45 @@
     }
     /* ✅ /HOZZÁADVA */
 
+    /* ✅ HOZZÁADVA: Lenyitható (nyilas) rész stílus */
+    .hero details.readmore{
+      max-width: 920px;
+      margin: 10px auto 0;
+      text-align: left;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(46,125,50,.05);
+      overflow: hidden;
+    }
+    .hero details.readmore > summary{
+      cursor: pointer;
+      padding: 12px 14px;
+      font-weight: 800;
+      color: var(--green-dark);
+      list-style: none; /* egyes böngészőkben */
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    /* nyíl vissza, ha a böngésző nem mutatná */
+    .hero details.readmore > summary::-webkit-details-marker{ display:none; }
+    .hero details.readmore > summary::before{
+      content:"▸";
+      font-size: 18px;
+      line-height: 1;
+      transform: translateY(-1px);
+      transition: transform .15s ease;
+    }
+    .hero details.readmore[open] > summary::before{
+      content:"▾";
+    }
+    .hero details.readmore .hero-text{
+      padding: 12px 14px 14px;
+      margin: 0 auto;
+    }
+    /* ✅ /HOZZÁADVA */
+
     .buttons{
       display:flex;
       gap:10px;
@@ -323,20 +362,24 @@
     <div class="hero">
       <h1>Öntözőrendszer telepítés és javítás</h1>
 
-      <!-- ✅ ITT KÉRTED: normális tördelés, ne egybefolyva (semmit nem vettünk ki) -->
-      <div class="hero-text">
-        <p>Cégünk a 2000-es évek óta foglalkozik professzionális öntözőrendszerek tervezésével és kivitelezésével. Több mint két évtizedes szakmai tapasztalatunknak köszönhetően megbízható és korszerű megoldásokat kínálunk családi házak, társasházak, parkok és egyéb zöldterületek számára.</p>
+      <!-- ✅ ITT KÉRTED: nyilas lenyitható "Olvass többet..." (semmit nem vettünk ki) -->
+      <details class="readmore">
+        <summary>Olvass többet az öntözésről és rólunk</summary>
 
-        <p>Munkánk során kiemelt figyelmet fordítunk az alapos tervezésre, a minőségi alapanyagok használatára és a precíz kivitelezésre. Célunk, hogy minden projekt esetében olyan modern, automatizált öntözőrendszert építsünk ki, amely hatékonyan biztosítja a növényzet megfelelő vízellátását, miközben gazdaságosan és hosszú távon megbízhatóan működik.</p>
+        <div class="hero-text">
+          <p>Cégünk a 2000-es évek óta foglalkozik professzionális öntözőrendszerek tervezésével és kivitelezésével. Több mint két évtizedes szakmai tapasztalatunknak köszönhetően megbízható és korszerű megoldásokat kínálunk családi házak, társasházak, parkok és egyéb zöldterületek számára.</p>
 
-        <p>Szolgáltatásaink magukban foglalják az öntözőrendszerek teljes körű tervezését és szakszerű telepítését. Legyen szó kisebb családi kertekről, társasházi zöldterületekről vagy nagyobb parkokról, minden munkát az adott terület igényeihez igazítva, maximális szakmai odafigyeléssel végzünk el.</p>
+          <p>Munkánk során kiemelt figyelmet fordítunk az alapos tervezésre, a minőségi alapanyagok használatára és a precíz kivitelezésre. Célunk, hogy minden projekt esetében olyan modern, automatizált öntözőrendszert építsünk ki, amely hatékonyan biztosítja a növényzet megfelelő vízellátását, miközben gazdaságosan és hosszú távon megbízhatóan működik.</p>
 
-        <p>Ügyfeleink számára külön kérhető szolgáltatásként karbantartást is vállalunk, amely segít biztosítani, hogy az öntözőrendszer hosszú távon is hatékonyan és problémamentesen működjön.</p>
+          <p>Szolgáltatásaink magukban foglalják az öntözőrendszerek teljes körű tervezését és szakszerű telepítését. Legyen szó kisebb családi kertekről, társasházi zöldterületekről vagy nagyobb parkokról, minden munkát az adott terület igényeihez igazítva, maximális szakmai odafigyeléssel végzünk el.</p>
 
-        <p>Fontos számunkra a minőség és az ügyfelek bizalma, ezért az általunk elvégzett kivitelezési munkákra <strong>1 év garanciát vállalunk</strong>.</p>
+          <p>Ügyfeleink számára külön kérhető szolgáltatásként karbantartást is vállalunk, amely segít biztosítani, hogy az öntözőrendszer hosszú távon is hatékonyan és problémamentesen működjön.</p>
 
-        <p>Szakmai tapasztalatunk, modern technológiáink és ügyfélközpontú szemléletünk garantálja, hogy minden projektünk tartós, megbízható és magas színvonalú megoldást nyújt a zöldterületek öntözésére.</p>
-      </div>
+          <p>Fontos számunkra a minőség és az ügyfelek bizalma, ezért az általunk elvégzett kivitelezési munkákra <strong>1 év garanciát vállalunk</strong>.</p>
+
+          <p>Szakmai tapasztalatunk, modern technológiáink és ügyfélközpontú szemléletünk garantálja, hogy minden projektünk tartós, megbízható és magas színvonalú megoldást nyújt a zöldterületek öntözésére.</p>
+        </div>
+      </details>
       <!-- ✅ /ITT KÉRTED -->
 
       <div class="buttons">
@@ -346,7 +389,7 @@
     </div>
 
     <section class="section" id="referenciak">
-      <h2>Referenciamunkák – Öntözés (2 kép)</h2>
+      <h2>Referenciamunkák – Öntözés (11 kép)</h2>
       <p>Kattints a képre a nagyításhoz.</p>
 
       <div class="gallery" id="gallery">
