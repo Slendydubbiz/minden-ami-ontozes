@@ -381,6 +381,58 @@
       header p{font-size:11px;}
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: telefonos lenyíló menü sáv */
+    .mobile-nav-toggle{
+      display:none;
+      width:100%;
+      box-sizing:border-box;
+      border:none;
+      background:var(--green);
+      color:#fff;
+      padding:14px 16px;
+      font-weight:800;
+      font-size:16px;
+      text-align:left;
+      cursor:pointer;
+    }
+    .mobile-nav-toggle span{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .mobile-nav-toggle .icon{
+      font-size:20px;
+      line-height:1;
+    }
+
+    @media (max-width: 768px){
+      body.is-mobile nav{
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        justify-content:flex-start;
+      }
+      body.is-mobile nav a{
+        display:block;
+        width:100%;
+        box-sizing:border-box;
+        border-top:1px solid rgba(255,255,255,.12);
+      }
+      body.is-mobile nav.open{
+        display:flex;
+      }
+      body.is-mobile .mobile-nav-toggle{
+        display:block;
+      }
+      body.is-mobile nav.is-fixed{
+        top:56px;
+      }
+      body.is-mobile #nav-spacer{
+        height:0;
+      }
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -392,6 +444,12 @@
       <p>Öntözőrendszer kivitelezés/telepítés/karbantartás • Kert kivitelezés/építés/karbantartás • Zöldfal karbantartás • Mezőgazdasági cső hegesztés.</p>
     </div>
   </header>
+
+  <!-- ✅ HOZZÁADVA: telefonos lenyíló menü gomb -->
+  <button class="mobile-nav-toggle" id="mobileNavToggle" aria-controls="mainNav" aria-expanded="false" type="button">
+    <span><span class="icon">☰</span> Menü</span>
+  </button>
+  <!-- ✅ /HOZZÁADVA -->
 
   <!-- ✅ HOZZÁADVA: id a nav-ra -->
   <nav id="mainNav">
@@ -405,7 +463,7 @@
     <a href="index.html#kapcsolat">Kapcsolat</a>
   </nav>
 
-  <!-- ✅ HOZZÁADVA: helykitöltő a fix menü alá (nem töröl semmit) -->
+  <!-- ✅ HOZZÁADVA: helykitöltő a fix nav alá (nem töröl semmit) -->
   <div id="nav-spacer" aria-hidden="true"></div>
 
   <div class="wrap">
@@ -558,6 +616,7 @@
     (function(){
       const nav = document.getElementById('mainNav');
       const spacer = document.getElementById('nav-spacer');
+      const mobileToggle = document.getElementById('mobileNavToggle');
       if(!nav || !spacer) return;
 
       const navTop = nav.getBoundingClientRect().top + window.scrollY;
@@ -579,6 +638,26 @@
             setSpacerHeight(0);
           }
         }
+
+        if(document.body.classList.contains('is-mobile') && mobileToggle){
+          if(shouldFix){
+            mobileToggle.style.position = 'fixed';
+            mobileToggle.style.top = '0';
+            mobileToggle.style.left = '0';
+            mobileToggle.style.right = '0';
+            mobileToggle.style.zIndex = '100000';
+            mobileToggle.style.boxShadow = '0 10px 25px rgba(0,0,0,.18)';
+            setSpacerHeight((mobileToggle.offsetHeight || 0) + (nav.classList.contains('open') ? nav.offsetHeight : 0));
+          } else {
+            mobileToggle.style.position = '';
+            mobileToggle.style.top = '';
+            mobileToggle.style.left = '';
+            mobileToggle.style.right = '';
+            mobileToggle.style.zIndex = '';
+            mobileToggle.style.boxShadow = '';
+            setSpacerHeight(nav.classList.contains('open') ? nav.offsetHeight : 0);
+          }
+        }
       }
 
       window.addEventListener('scroll', onScroll, { passive: true });
@@ -586,9 +665,80 @@
         if(nav.classList.contains('is-fixed')){
           setSpacerHeight(nav.offsetHeight);
         }
+        onScroll();
       });
 
       onScroll();
+    })();
+  </script>
+  <!-- ✅ /HOZZÁADVA -->
+
+  <!-- ✅ HOZZÁADVA: telefon/gép felismerés + telefonos lenyíló menü működés -->
+  <script>
+    (function(){
+      const body = document.body;
+      const nav = document.getElementById('mainNav');
+      const toggle = document.getElementById('mobileNavToggle');
+      const mq = window.matchMedia('(max-width: 768px), (pointer: coarse)');
+
+      function isMobileDevice(){
+        return mq.matches;
+      }
+
+      function applyDeviceClass(){
+        const mobile = isMobileDevice();
+        body.classList.toggle('is-mobile', mobile);
+        body.classList.toggle('is-desktop', !mobile);
+
+        if(!mobile){
+          nav.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      function toggleMenu(){
+        if(!body.classList.contains('is-mobile')) return;
+        nav.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
+
+        const spacer = document.getElementById('nav-spacer');
+        if(spacer){
+          if(nav.classList.contains('is-fixed')){
+            spacer.style.height = (toggle.offsetHeight + nav.offsetHeight) + 'px';
+          } else {
+            spacer.style.height = nav.classList.contains('open') ? nav.offsetHeight + 'px' : '0px';
+          }
+        }
+      }
+
+      if(toggle && nav){
+        toggle.addEventListener('click', toggleMenu);
+
+        nav.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click', function(){
+            if(body.classList.contains('is-mobile')){
+              nav.classList.remove('open');
+              toggle.setAttribute('aria-expanded', 'false');
+              const spacer = document.getElementById('nav-spacer');
+              if(spacer){
+                if(nav.classList.contains('is-fixed')){
+                  spacer.style.height = toggle.offsetHeight + 'px';
+                } else {
+                  spacer.style.height = '0px';
+                }
+              }
+            }
+          });
+        });
+      }
+
+      if(mq.addEventListener){
+        mq.addEventListener('change', applyDeviceClass);
+      } else if(mq.addListener){
+        mq.addListener(applyDeviceClass);
+      }
+
+      applyDeviceClass();
     })();
   </script>
   <!-- ✅ /HOZZÁADVA -->
