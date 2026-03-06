@@ -73,6 +73,9 @@
       display:flex;
       justify-content:center;
       flex-wrap:wrap;
+      width:100%;
+      margin:0;
+      box-sizing:border-box;
     }
     nav a{
       color:white;
@@ -87,8 +90,11 @@
       top:0;
       left:0;
       right:0;
+      width:100%;
       z-index:99999;
       box-shadow:0 10px 25px rgba(0,0,0,.18);
+      transform:none;
+      margin:0;
     }
 
     #nav-spacer{ height:0; }
@@ -376,7 +382,6 @@
       flex-wrap:wrap;
     }
 
-    /* MOBIL LENYITHATÓ MENÜ – egy sorban látszó felső menüsáv */
     .menu-toggle{
       display:none;
       width:100%;
@@ -419,58 +424,41 @@
     body.mobile-device nav.is-collapsible .menu-links{
       display:none;
       width:100%;
-      background:var(--green);
     }
     body.mobile-device nav.is-collapsible.is-open .menu-links{
-      display:block;
+      display:flex;
+      flex-wrap:wrap;
     }
     body.mobile-device nav.is-collapsible .menu-links a{
       width:100%;
       display:block;
       text-align:center;
-      box-sizing:border-box;
-      border-top:1px solid rgba(255,255,255,.12);
     }
 
     @media (max-width:768px){
       .menu-toggle{
         display:flex;
       }
-
       body.mobile-device nav{
         display:block;
-        width:100%;
       }
-
       body.mobile-device nav .menu-links{
-        width:100%;
-      }
-
-      /* Mobilon csak a lenyitható fő sor látszik alapból */
-      body.mobile-device #mainNav{
-        width:100%;
-        margin:0;
-      }
-
-      body.mobile-device #mainNav.is-fixed{
-        left:0;
-        right:0;
-        transform:none;
         width:100%;
       }
     }
 
+    /* GÉPEN MINDEN MARAD VÍZSZINTESEN, DE A ZÖLD SÁV VÉGIGÉR A SZÉLÉIG */
     @media (min-width:769px){
       body.desktop-device #mainNav{
-        width:calc(100% - 2cm);
-        margin:0 auto;
+        width:100%;
+        margin:0;
         justify-content:center;
         flex-wrap:wrap;
         box-sizing:border-box;
       }
 
       body.desktop-device #mainNav .menu-links{
-        width:auto;
+        width:100%;
         display:flex !important;
         justify-content:center;
         align-items:center;
@@ -489,10 +477,11 @@
       }
 
       body.desktop-device #mainNav.is-fixed{
-        left:50%;
-        right:auto;
-        transform:translateX(-50%);
-        width:calc(100% - 2cm);
+        left:0;
+        right:0;
+        transform:none;
+        width:100%;
+        margin:0;
       }
     }
   </style>
@@ -888,7 +877,7 @@
       const spacer = document.getElementById('nav-spacer');
       if(!nav || !spacer) return;
 
-      let navTop = nav.getBoundingClientRect().top + window.scrollY;
+      const navTop = nav.getBoundingClientRect().top + window.scrollY;
 
       function setSpacerHeight(px){
         spacer.style.height = px + 'px';
@@ -911,7 +900,6 @@
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', function(){
-        navTop = nav.getBoundingClientRect().top + window.scrollY - (nav.classList.contains('is-fixed') ? 0 : 0);
         if(nav.classList.contains('is-fixed')){
           setSpacerHeight(nav.offsetHeight);
         }
@@ -923,78 +911,70 @@
 
   <script>
     (function () {
-      const body = document.body;
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+      const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
+      const isMobile = isMobileUA || (isTouch && isSmallScreen);
+
+      document.body.classList.remove('mobile-device', 'desktop-device');
+      document.body.classList.add(isMobile ? 'mobile-device' : 'desktop-device');
+      document.body.setAttribute('data-device', isMobile ? 'mobile' : 'desktop');
+
       const nav = document.getElementById('mainNav');
       const toggle = document.getElementById('menuToggle');
       const links = document.getElementById('menuLinks');
 
-      if(!nav || !toggle || !links) return;
+      if(nav && toggle && links){
+        nav.classList.add('is-collapsible');
 
-      nav.classList.add('is-collapsible');
-
-      function isMobileNow(){
-        return window.matchMedia('(max-width: 768px)').matches;
-      }
-
-      function applyDeviceClass(){
-        if(isMobileNow()){
-          body.classList.remove('desktop-device');
-          body.classList.add('mobile-device');
-          body.setAttribute('data-device', 'mobile');
-        } else {
-          body.classList.remove('mobile-device');
-          body.classList.add('desktop-device');
-          body.setAttribute('data-device', 'desktop');
-        }
-      }
-
-      function closeMobileMenu(){
-        nav.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.querySelector('.menu-icon').textContent = '☰';
-      }
-
-      function openMobileMenu(){
-        nav.classList.add('is-open');
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.querySelector('.menu-icon').textContent = '✕';
-      }
-
-      function syncMenuState(){
-        applyDeviceClass();
-
-        if(body.classList.contains('desktop-device')){
+        function setDesktopMenu(){
           nav.classList.remove('is-open');
           toggle.setAttribute('aria-expanded', 'false');
-          toggle.querySelector('.menu-icon').textContent = '☰';
           links.style.display = '';
-        } else {
-          closeMobileMenu();
         }
-      }
 
-      toggle.addEventListener('click', function(){
-        if(!body.classList.contains('mobile-device')) return;
-
-        const isOpen = nav.classList.contains('is-open');
-        if(isOpen){
-          closeMobileMenu();
-        } else {
-          openMobileMenu();
+        function setMobileMenu(){
+          nav.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
         }
-      });
 
-      links.querySelectorAll('a').forEach(function(link){
-        link.addEventListener('click', function(){
-          if(body.classList.contains('mobile-device')){
-            closeMobileMenu();
+        if(isMobile){
+          setMobileMenu();
+        }else{
+          setDesktopMenu();
+        }
+
+        toggle.addEventListener('click', function(){
+          if(!document.body.classList.contains('mobile-device')) return;
+          const isOpen = nav.classList.toggle('is-open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        links.querySelectorAll('a').forEach(function(link){
+          link.addEventListener('click', function(){
+            if(document.body.classList.contains('mobile-device')){
+              nav.classList.remove('is-open');
+              toggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        });
+
+        window.addEventListener('resize', function(){
+          const mobileNow = window.matchMedia('(max-width: 768px)').matches;
+          if(mobileNow){
+            document.body.classList.remove('desktop-device');
+            document.body.classList.add('mobile-device');
+            document.body.setAttribute('data-device', 'mobile');
+            setMobileMenu();
+          }else{
+            document.body.classList.remove('mobile-device');
+            document.body.classList.add('desktop-device');
+            document.body.setAttribute('data-device', 'desktop');
+            setDesktopMenu();
           }
         });
-      });
-
-      window.addEventListener('resize', syncMenuState);
-
-      syncMenuState();
+      }
     })();
   </script>
 
