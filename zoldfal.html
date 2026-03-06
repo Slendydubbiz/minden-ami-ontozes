@@ -207,6 +207,112 @@
       header p{font-size:11px;}
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Hero lenyitható (szöveg fül) */
+    .hero details{
+      text-align:left;
+      max-width:980px;
+      margin:16px auto 0;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .hero summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:900;
+      color:#2e7d32;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .hero summary::-webkit-details-marker{display:none;}
+    .hero summary .sum-icon{
+      width:34px;height:34px;flex:0 0 34px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background:rgba(46,125,50,.10);
+      color:#2e7d32;
+      font-size:18px;
+      transition: transform .18s ease;
+    }
+    .hero details[open] summary .sum-icon{transform:rotate(180deg);}
+    .hero .hero-more{
+      padding:0 14px 14px 14px;
+      border-top:1px solid rgba(0,0,0,.06);
+      color:#111;
+      line-height:1.55;
+      font-size:14px;
+    }
+    .hero .hero-more p{margin:10px 0;}
+    .hero .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:8px 0 10px;
+      padding:0;
+      list-style:none;
+    }
+    .hero .chips li{
+      background:rgba(46,125,50,.08);
+      border:1px solid rgba(46,125,50,.18);
+      color:#0b2b0b;
+      padding:8px 10px;
+      border-radius:999px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .hero .note{
+      background:rgba(0,0,0,.03);
+      border:1px dashed rgba(0,0,0,.14);
+      border-radius:12px;
+      padding:10px 12px;
+      margin-top:10px;
+    }
+    /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Referencia képek lenyitható fül */
+    .refs details{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      overflow:hidden;
+    }
+    .refs details summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:900;
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .refs details summary::-webkit-details-marker{display:none;}
+    .refs details summary .sum-icon{
+      width:34px;height:34px;flex:0 0 34px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background:rgba(46,125,50,.10);
+      color:#2e7d32;
+      font-size:18px;
+      transition: transform .18s ease;
+    }
+    .refs details[open] summary .sum-icon{transform:rotate(180deg);}
+    .refs .details-body{
+      padding:0 0 14px 0;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    .refs .details-body-inner{
+      padding:14px 0 0 0;
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -234,6 +340,30 @@
   <p>Látványos, modern zöldfal megoldások tervezése, kivitelezése és karbantartása Nyíregyházán és környékén. Jelenleg a LEGO-nál tartunk karban zöldfalat.</p>
   <a class="button" href="tel:+36501267123">Hívás: +36 50 126 7123</a>
   <a class="button" href="index.html#idopont">Időpontfoglalás</a>
+
+  <!-- ✅ HOZZÁADVA: Hero szöveg lenyitható fülben (2024-es kezdéssel) -->
+  <details id="heroDetails">
+    <summary>
+      <span>Látványos, modern zöldfal megoldások – tervezés, kivitelezés, karbantartás</span>
+      <span class="sum-icon">⌄</span>
+    </summary>
+    <div class="hero-more">
+      <p>A zöldfal nem csak dekoráció: prémium megjelenést ad, természetközeli hangulatot teremt, és modern stílust visz otthonokba, irodákba, üzletekbe és vendéglátóterekbe.</p>
+      <p><strong>2024-ben indítottam el a zöldfal szolgáltatásomat</strong>, hogy ügyfeleimnek olyan igényes, tartós és könnyen fenntartható megoldást tudjak adni, ami a helyszín adottságaihoz és az elképzelt stílushoz tökéletesen illeszkedik.</p>
+
+      <p><strong>Szolgáltatásaim:</strong></p>
+      <ul class="chips">
+        <li>Tervezés • felmérés + javaslat</li>
+        <li>Kivitelezés • szakszerű telepítés</li>
+        <li>Karbantartás • ápolás + csere</li>
+      </ul>
+
+      <div class="note">
+        <p><strong>Cél:</strong> rendezett, látványos zöldfal, ami hosszú távon is szép marad – igényes kivitelezéssel és megbízható karbantartással.</p>
+      </div>
+    </div>
+  </details>
+  <!-- ✅ /HOZZÁADVA -->
 </section>
 
 <section class="section">
@@ -251,51 +381,63 @@
   </div>
 </section>
 
-<section class="section">
-  <h2>Referencia munkák</h2>
-  <p>Kattints a képekre a nagyításhoz — nyilakkal vagy billentyűzettel válthatsz.</p>
+<section class="section refs">
+  <!-- ✅ HOZZÁADVA: A referencia képek lenyitható fülben vannak -->
+  <details id="refsDetails" open>
+    <summary>
+      <span>Referencia munkák</span>
+      <span class="sum-icon">⌄</span>
+    </summary>
 
-  <div class="grid">
-    <!-- KÉP 1 (hozzáadva: data-* a lightboxhoz) -->
-    <div class="imgbox">
-      <a href="assets/zoldfal/zoldfal-01.jpg"
-         class="js-lightbox"
-         data-index="0"
-         data-jpg="assets/zoldfal/zoldfal-01.jpg"
-         data-webp="assets/zoldfal/zoldfal-01.webp"
-         title="Zöld fal referencia 1">
-        <picture>
-          <source srcset="assets/zoldfal/thumbs/zoldfal-01.webp" type="image/webp">
-          <img src="assets/zoldfal/thumbs/zoldfal-01.jpg"
-               alt="Zöld fal referencia munka 1 - Czinke Attila e.v. Nyíregyháza"
-               loading="lazy" decoding="async">
-        </picture>
-      </a>
-      <div class="imgcap">
-        <small>Telepített zöldfal, beltéri megoldás.</small>
+    <div class="details-body">
+      <div class="details-body-inner">
+        <p style="margin:0 0 14px;">Kattints a képekre a nagyításhoz — nyilakkal vagy billentyűzettel válthatsz.</p>
+
+        <div class="grid">
+          <!-- KÉP 1 (hozzáadva: data-* a lightboxhoz) -->
+          <div class="imgbox">
+            <a href="assets/zoldfal/zoldfal-01.jpg"
+               class="js-lightbox"
+               data-index="0"
+               data-jpg="assets/zoldfal/zoldfal-01.jpg"
+               data-webp="assets/zoldfal/zoldfal-01.webp"
+               title="Zöld fal referencia 1">
+              <picture>
+                <source srcset="assets/zoldfal/thumbs/zoldfal-01.webp" type="image/webp">
+                <img src="assets/zoldfal/thumbs/zoldfal-01.jpg"
+                     alt="Zöld fal referencia munka 1 - Czinke Attila e.v. Nyíregyháza"
+                     loading="lazy" decoding="async">
+              </picture>
+            </a>
+            <div class="imgcap">
+              <small>Telepített zöldfal, beltéri megoldás.</small>
+            </div>
+          </div>
+
+          <!-- KÉP 2 -->
+          <div class="imgbox">
+            <a href="assets/zoldfal/zoldfal-02.jpg"
+               class="js-lightbox"
+               data-index="1"
+               data-jpg="assets/zoldfal/zoldfal-02.jpg"
+               data-webp="assets/zoldfal/zoldfal-02.webp"
+               title="Zöld fal referencia 2">
+              <picture>
+                <source srcset="assets/zoldfal/thumbs/zoldfal-02.webp" type="image/webp">
+                <img src="assets/zoldfal/thumbs/zoldfal-02.jpg"
+                     alt="Zöld fal referencia munka 2 - Czinke Attila e.v. Nyíregyháza"
+                     loading="lazy" decoding="async">
+              </picture>
+            </a>
+            <div class="imgcap">
+              <small>Részletfotó, növény-összeállítás.</small>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- KÉP 2 -->
-    <div class="imgbox">
-      <a href="assets/zoldfal/zoldfal-02.jpg"
-         class="js-lightbox"
-         data-index="1"
-         data-jpg="assets/zoldfal/zoldfal-02.jpg"
-         data-webp="assets/zoldfal/zoldfal-02.webp"
-         title="Zöld fal referencia 2">
-        <picture>
-          <source srcset="assets/zoldfal/thumbs/zoldfal-02.webp" type="image/webp">
-          <img src="assets/zoldfal/thumbs/zoldfal-02.jpg"
-               alt="Zöld fal referencia munka 2 - Czinke Attila e.v. Nyíregyháza"
-               loading="lazy" decoding="async">
-        </picture>
-      </a>
-      <div class="imgcap">
-        <small>Részletfotó, növény-összeállítás.</small>
-      </div>
-    </div>
-  </div>
+  </details>
+  <!-- ✅ /HOZZÁADVA -->
 </section>
 
 <footer>© 2026 Czinke Attila e.v. – Minden ami öntözés és kert karbantartás • czinke.attila79@gmail.com</footer>
@@ -389,6 +531,30 @@
   })();
 </script>
 <!-- /LIGHTBOX JS -->
+
+<!-- ✅ HOZZÁADVA: Referencia képek fül alapból ZÁRVA (nem veszünk ki semmit, csak induláskor bezárjuk) -->
+<script>
+  (function(){
+    const refs = document.getElementById('refsDetails');
+    if(!refs) return;
+    window.addEventListener('DOMContentLoaded', function(){
+      refs.open = false;   // induláskor zárva, kattintásra nyitható
+    });
+  })();
+</script>
+<!-- ✅ /HOZZÁADVA -->
+
+<!-- ✅ HOZZÁADVA: Hero lenyitható szöveg alapból ZÁRVA (biztonság kedvéért) -->
+<script>
+  (function(){
+    const hero = document.getElementById('heroDetails');
+    if(!hero) return;
+    window.addEventListener('DOMContentLoaded', function(){
+      hero.open = false;
+    });
+  })();
+</script>
+<!-- ✅ /HOZZÁADVA -->
 
 </body>
 </html>
