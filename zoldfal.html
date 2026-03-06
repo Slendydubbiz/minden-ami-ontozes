@@ -2,10 +2,10 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <title>Zöld fal Nyíregyháza | Czinke Attila e.v.</title>
-  <meta name="description" content="Zöld fal tervezés, kivitelezés és karbantartás Nyíregyházán és környékén. Referencia munkák. Czinke Attila e.v.">
+  <meta name="description" content="Zöldfal karbantartás Nyíregyházán és környékén. Referencia munkák. Czinke Attila e.v.">
 
   <link rel="canonical" href="https://slendydubbiz.github.io/minden-ami-ontozes/zoldfal.html">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -42,14 +42,14 @@
   <meta property="og:locale" content="hu_HU">
   <meta property="og:site_name" content="Czinke Attila e.v.">
   <meta property="og:title" content="Zöld fal Nyíregyháza | Czinke Attila e.v.">
-  <meta property="og:description" content="Zöld fal tervezés, kivitelezés és karbantartás Nyíregyházán és környékén. Referencia munkák.">
+  <meta property="og:description" content="Zöldfal karbantartás Nyíregyházán és környékén. Referencia munkák.">
   <meta property="og:url" content="https://slendydubbiz.github.io/minden-ami-ontozes/zoldfal.html">
   <meta property="og:image" content="https://slendydubbiz.github.io/minden-ami-ontozes/logo.png">
   <meta property="og:image:alt" content="Czinke Attila e.v. - Zöld fal Nyíregyháza">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Zöld fal Nyíregyháza | Czinke Attila e.v.">
-  <meta name="twitter:description" content="Zöld fal tervezés, kivitelezés és karbantartás Nyíregyházán és környékén. Referencia munkák.">
+  <meta name="twitter:description" content="Zöldfal karbantartás Nyíregyházán és környékén. Referencia munkák.">
   <meta name="twitter:image" content="https://slendydubbiz.github.io/minden-ami-ontozes/logo.png">
 
   <script type="application/ld+json">
@@ -69,46 +69,154 @@
       "addressCountry": "HU"
     },
     "areaServed": { "@type": "Place", "name": "Nyíregyháza és környéke" },
-    "serviceType": ["Zöld fal tervezés","Zöld fal kivitelezés","Zöld fal karbantartás"]
+    "serviceType": ["Zöldfal karbantartás"]
   }
   </script>
 
   <style>
-    body{font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f5f5f5;}
+    :root{
+      --green:#2e7d32;
+      --green-dark:#1b5e20;
+      --header:#1f3d1f;
+      --bg:#f5f5f5;
+      --card-radius:14px;
+      --container:1100px;
+      --safe-bottom:max(18px, env(safe-area-inset-bottom));
+      --safe-right:max(18px, env(safe-area-inset-right));
+    }
+
+    *{box-sizing:border-box;}
+
+    html{
+      -webkit-text-size-adjust:100%;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      margin:0;
+      background:var(--bg);
+      color:#111;
+      overflow-x:hidden;
+      word-wrap:break-word;
+      overflow-wrap:anywhere;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+    }
+
+    a{
+      overflow-wrap:anywhere;
+      word-break:break-word;
+    }
+
     header{background:#1f3d1f;color:#fff;padding:20px;text-align:center;}
     header img{max-width:220px;width:100%;height:auto;display:block;margin:0 auto 10px;}
 
-    nav{background:#2e7d32;display:flex;justify-content:center;flex-wrap:wrap;position:sticky;top:0;z-index:50;}
-    nav a{color:#fff;padding:15px 18px;text-decoration:none;font-weight:bold;}
+    nav{
+      background:#2e7d32;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      position:sticky;
+      top:0;
+      z-index:50;
+      box-shadow:0 2px 8px rgba(0,0,0,.08);
+    }
+    nav a{
+      color:#fff;
+      padding:15px 18px;
+      text-decoration:none;
+      font-weight:bold;
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      line-height:1.25;
+    }
     nav a:hover{background:#1b5e20;}
 
-    .hero{padding:40px 20px;text-align:center;background:#fff;}
-    .hero h1{color:#2e7d32;margin:0 0 10px;}
+    .hero{
+      padding:40px 20px;
+      text-align:center;
+      background:#fff;
+    }
+    .hero h1{
+      color:#2e7d32;
+      margin:0 0 10px;
+      line-height:1.2;
+      font-size:clamp(28px, 4vw, 40px);
+    }
+    .hero p{
+      max-width:900px;
+      margin:0 auto 12px;
+      line-height:1.6;
+      font-size:clamp(15px, 2vw, 18px);
+    }
 
     .button{
-      display:inline-block;padding:12px 18px;background:#2e7d32;color:#fff;border-radius:10px;
-      text-decoration:none;margin:8px;font-weight:bold;transition:.2s;border:none;cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:12px 18px;
+      background:#2e7d32;
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      margin:8px;
+      font-weight:bold;
+      transition:.2s;
+      border:none;
+      cursor:pointer;
+      line-height:1.35;
+      min-height:46px;
+      white-space:normal;
+      word-break:break-word;
+      max-width:100%;
     }
     .button:hover{background:#1b5e20;transform:translateY(-1px);}
 
-    .section{padding:40px 20px;max-width:1100px;margin:auto;}
+    .section{padding:40px 20px;max-width:1100px;margin:auto;width:100%;}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
     .card{background:#fff;padding:20px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.08);}
     .card h3{margin-top:0;}
-    .pill{display:inline-block;background:#e8f5e9;color:#1b5e20;padding:6px 10px;border-radius:999px;font-size:13px;font-weight:bold;}
+    .pill{
+      display:inline-block;
+      background:#e8f5e9;
+      color:#1b5e20;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:bold;
+      line-height:1.35;
+      white-space:normal;
+      max-width:100%;
+    }
 
     /* KÉP KÁRTYA */
     .imgbox{border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);background:#fff;}
     .imgbox a{display:block; cursor:zoom-in;}
     .imgbox img{width:100%;height:auto;display:block;}
-    .imgcap{padding:14px 16px;}
+    .imgcap{padding:14px 16px;line-height:1.5;}
     .imgcap b{display:block;margin-bottom:6px;}
     .imgcap small{color:#555;}
 
-    footer{background:#1f3d1f;color:#fff;text-align:center;padding:20px;margin-top:40px;}
+    footer{
+      background:#1f3d1f;
+      color:#fff;
+      text-align:center;
+      padding:20px;
+      margin-top:40px;
+      line-height:1.6;
+      word-break:break-word;
+    }
 
     .floating-call{
-      position:fixed;bottom:18px;right:18px;background:#2e7d32;color:#fff;
+      position:fixed;bottom:var(--safe-bottom);right:var(--safe-right);background:#2e7d32;color:#fff;
       width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
       font-size:30px;text-decoration:none;z-index:9999;
       box-shadow:0 10px 25px rgba(0,0,0,.3);
@@ -181,6 +289,7 @@
       gap:12px;                          /* kis térköz */
       min-height:64px;                   /* kb 1-2 cm hatás (képernyőtől függ) */
       box-sizing:border-box;
+      flex-wrap:nowrap;
     }
     header img{
       width:64px;                        /* kisebb logo */
@@ -188,17 +297,24 @@
       max-width:none;                    /* a régi max-width felülírása */
       margin:0;                          /* ne legyen középre tolás */
       flex:0 0 64px;
+      object-fit:contain;
+    }
+    header > div{
+      min-width:0;
+      flex:1 1 auto;
     }
     header h2{
       margin:0;
       font-size:16px;
       line-height:1.1;
+      word-break:break-word;
     }
     header p{
       margin:2px 0 0 0;
       font-size:12px;
-      line-height:1.2;
+      line-height:1.35;
       opacity:.95;
+      word-break:break-word;
     }
     @media (max-width:480px){
       header{gap:10px; min-height:60px; padding:10px 12px;}
@@ -229,6 +345,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
+      line-height:1.45;
     }
     .hero summary::-webkit-details-marker{display:none;}
     .hero summary .sum-icon{
@@ -245,8 +362,9 @@
       padding:0 14px 14px 14px;
       border-top:1px solid rgba(0,0,0,.06);
       color:#111;
-      line-height:1.55;
+      line-height:1.6;
       font-size:14px;
+      word-break:break-word;
     }
     .hero .hero-more p{margin:10px 0;}
     .hero .chips{
@@ -264,7 +382,10 @@
       padding:8px 10px;
       border-radius:999px;
       font-weight:800;
-      white-space:nowrap;
+      white-space:normal;
+      line-height:1.4;
+      word-break:break-word;
+      max-width:100%;
     }
     .hero .note{
       background:rgba(0,0,0,.03);
@@ -293,6 +414,7 @@
       align-items:center;
       justify-content:space-between;
       gap:10px;
+      line-height:1.45;
     }
     .refs details summary::-webkit-details-marker{display:none;}
     .refs details summary .sum-icon{
@@ -313,6 +435,59 @@
       padding:14px 0 0 0;
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: telefon + gép optimalizálás */
+    body.mobile-device nav{justify-content:flex-start;}
+    body.mobile-device .hero,
+    body.mobile-device .section{padding-left:16px;padding-right:16px;}
+    body.mobile-device .button{min-height:48px;}
+    body.desktop-device .hero{padding-top:48px;padding-bottom:48px;}
+
+    @media (max-width:768px){
+      nav a{
+        flex:1 1 50%;
+        padding:14px 12px;
+        font-size:15px;
+      }
+
+      .section{padding:32px 16px;}
+      .hero{padding:32px 16px;}
+      .grid{grid-template-columns:1fr;}
+      .button{width:100%;margin:8px 0;}
+      .floating-call{width:60px;height:60px;font-size:28px;}
+    }
+
+    @media (max-width:480px){
+      nav a{
+        flex:1 1 100%;
+        width:100%;
+        padding:13px 12px;
+        font-size:15px;
+        min-height:auto;
+      }
+
+      .hero h1{font-size:26px;}
+      .hero p{font-size:15px;}
+      .hero .chips{flex-direction:column;}
+      .hero .chips li{width:100%;border-radius:14px;}
+      .card,.imgcap{padding:16px;}
+      footer{padding:18px 14px 90px 14px;}
+      .floating-call{
+        width:58px;
+        height:58px;
+        font-size:27px;
+        bottom:max(14px, env(safe-area-inset-bottom));
+        right:max(14px, env(safe-area-inset-right));
+      }
+    }
+
+    @media (max-width:360px){
+      header{flex-wrap:wrap;}
+      header > div{width:100%;}
+      nav a{font-size:14px;}
+      .hero h1{font-size:23px;}
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -322,7 +497,7 @@
   <img src="logo.png" alt="Logo" width="220" height="220" decoding="async" fetchpriority="high">
   <div>
     <h2>Czinke Attila e.v</h2>
-    <p>Öntözőrendszer kivitelezés/telepítés/karbantartás • Kert kivitelezés/építés/karbantartás • Zöldfal kivitelezés/telepítés/karbantartás • Nyíregyházán és környékén</p>
+    <p>Öntözőrendszer kivitelezés/telepítés/karbantartás • Kert kivitelezés/építés/karbantartás • Zöldfal karbantartás • Nyíregyházán és környékén</p>
   </div>
 </header>
 
@@ -349,17 +524,15 @@
     </summary>
     <div class="hero-more">
       <p>A zöldfal nem csak dekoráció: prémium megjelenést ad, természetközeli hangulatot teremt, és modern stílust visz otthonokba, irodákba, üzletekbe és vendéglátóterekbe.</p>
-      <p><strong>2024-ben indítottam el a zöldfal szolgáltatásomat</strong>, hogy ügyfeleimnek olyan igényes, tartós és könnyen fenntartható megoldást tudjak adni, ami a helyszín adottságaihoz és az elképzelt stílushoz tökéletesen illeszkedik.</p>
+      <p><strong>2024-ben indítottam el a zöldfal karbantartási szolgáltatásomat</strong>, hogy ügyfeleimnek olyan igényes, tartós és könnyen fenntartható megoldást tudjak biztosítani, ami hosszú távon is szép és rendezett marad.</p>
 
       <p><strong>Szolgáltatásaim:</strong></p>
       <ul class="chips">
-        <li>Tervezés • felmérés + javaslat</li>
-        <li>Kivitelezés • szakszerű telepítés</li>
         <li>Karbantartás • ápolás + csere</li>
       </ul>
 
       <div class="note">
-        <p><strong>Cél:</strong> rendezett, látványos zöldfal, ami hosszú távon is szép marad – igényes kivitelezéssel és megbízható karbantartással.</p>
+        <p><strong>Cél:</strong> rendezett, látványos zöldfal, ami hosszú távon is szép marad – igényes és megbízható karbantartással.</p>
       </div>
     </div>
   </details>
@@ -394,7 +567,7 @@
               </picture>
             </a>
             <div class="imgcap">
-              <small>Telepített zöldfal, beltéri megoldás.</small>
+              <small>Karbantartott zöldfal, beltéri megoldás.</small>
             </div>
           </div>
 
@@ -515,6 +688,22 @@
   })();
 </script>
 <!-- /LIGHTBOX JS -->
+
+<!-- ✅ HOZZÁADVA: eszközfelismerés mobil / PC -->
+<script>
+  (function () {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    const isSmallScreen = window.matchMedia('(max-width: 768px)').matches;
+    const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
+    const isMobile = isMobileUA || (isTouch && isSmallScreen);
+
+    document.body.classList.remove('mobile-device', 'desktop-device');
+    document.body.classList.add(isMobile ? 'mobile-device' : 'desktop-device');
+    document.body.setAttribute('data-device', isMobile ? 'mobile' : 'desktop');
+  })();
+</script>
+<!-- ✅ /HOZZÁADVA -->
 
 <!-- ✅ HOZZÁADVA: Referencia képek fül alapból ZÁRVA (nem veszünk ki semmit, csak induláskor bezárjuk) -->
 <script>
