@@ -256,6 +256,74 @@
       header p{font-size:12px;}
     }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Lenyitható főoldali összefoglaló + "Miért minket?" a kártyák fölé */
+    .home-details{
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,.08);
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.06);
+      margin:0 0 18px 0; /* kártyák fölött */
+    }
+    .home-details summary{
+      list-style:none;
+      cursor:pointer;
+      padding:16px 16px;
+      font-weight:900;
+      color:#2e7d32;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .home-details summary::-webkit-details-marker{display:none;}
+    .home-details .sum-icon{
+      width:34px;height:34px;flex:0 0 34px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background:rgba(46,125,50,.10);
+      color:#2e7d32;
+      font-size:18px;
+      transition:transform .18s ease;
+    }
+    .home-details[open] summary .sum-icon{transform:rotate(180deg);}
+
+    .home-details .details-body{
+      padding:0 16px 16px 16px;
+      border-top:1px solid rgba(0,0,0,.06);
+      color:#111;
+      line-height:1.6;
+      font-size:14px;
+    }
+    .home-details .details-body p{margin:10px 0;}
+
+    .home-details .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:10px 0 12px;
+      padding:0;
+      list-style:none;
+    }
+    .home-details .chips li{
+      background:rgba(46,125,50,.08);
+      border:1px solid rgba(46,125,50,.18);
+      color:#0b2b0b;
+      padding:9px 11px;
+      border-radius:999px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    .home-details .note{
+      background:rgba(0,0,0,.03);
+      border:1px dashed rgba(0,0,0,.14);
+      border-radius:12px;
+      padding:10px 12px;
+      margin-top:10px;
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -288,6 +356,39 @@
 </section>
 
 <section class="section">
+  <!-- ✅ HOZZÁADVA: Lenyitható összefoglaló a kártyák fölé -->
+  <details class="home-details" id="homeSummary">
+    <summary>
+      <span>Szolgáltatásaim egy helyen – öntözés, kert, zöldfal, mezőgazdasági megoldások</span>
+      <span class="sum-icon">⌄</span>
+    </summary>
+
+    <div class="details-body">
+      <p>
+        Nyíregyházán és környékén megbízható, precíz kivitelezéssel vállalok <strong>öntözőrendszer telepítést és karbantartást</strong>,
+        <strong>kertkarbantartást</strong>, modern <strong>zöldfal megoldások kivitelezését és gondozását</strong>, valamint
+        <strong>mezőgazdasági öntözőrendszerekhez kapcsolódó KPE csőhegesztést Ø315 mm-ig</strong>.
+      </p>
+
+      <ul class="chips">
+        <li>Öntözőrendszer • tervezés / telepítés / javítás / téliesítés / tavaszi indítás</li>
+        <li>Kertkarbantartás • fűnyírás / metszés / kaszálás / kertgondozás</li>
+        <li>Zöldfal • tervezés / kivitelezés / karbantartás</li>
+        <li>Mezőgazdasági • KPE csőhegesztés Ø315 mm-ig</li>
+      </ul>
+
+      <div class="note">
+        <p><strong>Miért érdemes minket választani?</strong></p>
+        <p>
+          Azért, mert <strong>több területen is otthon vagyunk</strong> (öntözés, kert, zöldfal, mezőgazdasági megoldások),
+          így egy kézben tudod tartani a munkát. A feladatokat <strong>éves tapasztalattal</strong>, pontosan és igényesen végezzük,
+          hogy a végeredmény hosszú távon is megbízható legyen.
+        </p>
+      </div>
+    </div>
+  </details>
+  <!-- ✅ /HOZZÁADVA -->
+
   <div class="grid">
     <div class="card">
       <span class="pill">Szolgáltatás</span>
@@ -398,8 +499,17 @@
 </script>
 <!-- ✅ /HOZZÁADVA -->
 
+<!-- ✅ HOZZÁADVA: A lenyitható összefoglaló alapból ZÁRVA (nem veszünk ki semmit, csak induláskor bezárjuk) -->
+<script>
+  (function(){
+    const d = document.getElementById('homeSummary');
+    if(!d) return;
+    window.addEventListener('DOMContentLoaded', function(){
+      d.open = false;
+    });
+  })();
+</script>
+<!-- ✅ /HOZZÁADVA -->
+
 </body>
 </html>
-
-
-
