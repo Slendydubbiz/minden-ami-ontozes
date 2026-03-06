@@ -359,6 +359,42 @@
     }
     .hero .cta-row a{ white-space:nowrap; }
     /* ✅ /HOZZÁADVA */
+
+    /* ✅ HOZZÁADVA: Referenciák lenyitható fül stílus (a fotókhoz) */
+    .section details{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius:12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      overflow:hidden;
+    }
+    .section details summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:900;
+      color:#111;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .section details summary::-webkit-details-marker{ display:none; }
+    .section details summary .sum-icon{
+      width:34px;height:34px;flex:0 0 34px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background: rgba(46,125,50,.10);
+      color: var(--green);
+      font-size:18px;
+      transition: transform .18s ease;
+    }
+    .section details[open] summary .sum-icon{ transform: rotate(180deg); }
+    .section .details-body{
+      padding: 0 14px 14px 14px;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    /* ✅ /HOZZÁADVA */
   </style>
 </head>
 
@@ -442,74 +478,84 @@
     </div>
 
     <section class="section" id="referenciak">
-      <h2>Referenciamunkák – Mezőgazdasági öntözés (8 kép)</h2>
-      <p>Kattints a képre a nagyításhoz.</p>
+      <!-- ✅ HOZZÁADVA: A fotók lenyitható fülbe kerültek (a galéria és minden eleme megmaradt) -->
+      <details open>
+        <summary>
+          <span>Referenciamunkák – Mezőgazdasági öntözés (8 kép)</span>
+          <span class="sum-icon">⌄</span>
+        </summary>
 
-      <div class="gallery" id="gallery">
-        <!-- 1 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-01.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-01.webp" aria-label="Mezőgazdasági öntözés referencia 1">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-01.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-01.jpg" alt="Mezőgazdasági öntözés referencia 1" width="520" height="520">
-          </picture>
-        </a>
+        <div class="details-body">
+          <p>Kattints a képre a nagyításhoz.</p>
 
-        <!-- 2 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-02.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-02.webp" aria-label="Mezőgazdasági öntözés referencia 2">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-02.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-02.jpg" alt="Mezőgazdasági öntözés referencia 2" width="520" height="520">
-          </picture>
-        </a>
+          <div class="gallery" id="gallery">
+            <!-- 1 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-01.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-01.webp" aria-label="Mezőgazdasági öntözés referencia 1">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-01.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-01.jpg" alt="Mezőgazdasági öntözés referencia 1" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 3 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-03.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-03.webp" aria-label="Mezőgazdasági öntözés referencia 3">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-03.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-03.jpg" alt="Mezőgazdasági öntözés referencia 3" width="520" height="520">
-          </picture>
-        </a>
+            <!-- 2 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-02.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-02.webp" aria-label="Mezőgazdasági öntözés referencia 2">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-02.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-02.jpg" alt="Mezőgazdasági öntözés referencia 2" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 4 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-04.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-04.webp" aria-label="Mezőgazdasági öntözés referencia 4">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-04.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-04.jpg" alt="Mezőgazdasági öntözés referencia 4" width="520" height="520">
-          </picture>
-        </a>
+            <!-- 3 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-03.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-03.webp" aria-label="Mezőgazdasági öntözés referencia 3">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-03.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-03.jpg" alt="Mezőgazdasági öntözés referencia 3" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 5 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-05.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-05.webp" aria-label="Mezőgazdasági öntözés referencia 5">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-05.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-05.jpg" alt="Mezőgazdasági öntözés referencia 5" width="520" height="520">
-          </picture>
-        </a>
+            <!-- 4 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-04.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-04.webp" aria-label="Mezőgazdasági öntözés referencia 4">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-04.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-04.jpg" alt="Mezőgazdasági öntözés referencia 4" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 6 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-06.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-06.webp" aria-label="Mezőgazdasági öntözés referencia 6">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-06.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-06.jpg" alt="Mezőgazdasági öntözés referencia 6" width="520" height="520">
-          </picture>
-        </a>
+            <!-- 5 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-05.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-05.webp" aria-label="Mezőgazdasági öntözés referencia 5">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-05.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-05.jpg" alt="Mezőgazdasági öntözés referencia 5" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 7 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-07.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-07.webp" aria-label="Mezőgazdasági öntözés referencia 7">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-07.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-07.jpg" alt="Mezőgazdasági öntözés referencia 7" width="520" height="520">
-          </picture>
-        </a>
+            <!-- 6 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-06.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-06.webp" aria-label="Mezőgazdasági öntözés referencia 6">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-06.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-06.jpg" alt="Mezőgazdasági öntözés referencia 6" width="520" height="520">
+              </picture>
+            </a>
 
-        <!-- 8 -->
-        <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-08.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-08.webp" aria-label="Mezőgazdasági öntözés referencia 8">
-          <picture>
-            <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-08.webp">
-            <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-08.jpg" alt="Mezőgazdasági öntözés referencia 8" width="520" height="520">
-          </picture>
-        </a>
-      </div>
+            <!-- 7 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-07.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-07.webp" aria-label="Mezőgazdasági öntözés referencia 7">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-07.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-07.jpg" alt="Mezőgazdasági öntözés referencia 7" width="520" height="520">
+              </picture>
+            </a>
+
+            <!-- 8 -->
+            <a class="gitem" href="#" data-full-jpg="assets/mezogazdasagi/mezogazdasagi-08.jpg" data-full-webp="assets/mezogazdasagi/mezogazdasagi-08.webp" aria-label="Mezőgazdasági öntözés referencia 8">
+              <picture>
+                <source type="image/webp" srcset="assets/mezogazdasagi/thumbs/mezogazdasagi-08.webp">
+                <img loading="lazy" decoding="async" src="assets/mezogazdasagi/thumbs/mezogazdasagi-08.jpg" alt="Mezőgazdasági öntözés referencia 8" width="520" height="520">
+              </picture>
+            </a>
+          </div>
+        </div>
+      </details>
+      <!-- ✅ /HOZZÁADVA -->
     </section>
   </div>
 
