@@ -570,6 +570,51 @@
     }
     /* ✅ /HOZZÁADVA */
 
+    /* ✅ HOZZÁADVA: mobil menü gomb */
+    .menu-toggle{
+      display:none;
+      width:100%;
+      background:var(--green);
+      color:#fff;
+      border:none;
+      padding:14px 16px;
+      font:inherit;
+      font-weight:bold;
+      text-align:left;
+      cursor:pointer;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      min-height:52px;
+    }
+
+    .menu-toggle .menu-icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:34px;
+      height:34px;
+      border-radius:10px;
+      background:rgba(255,255,255,.14);
+      font-size:20px;
+      flex:0 0 34px;
+    }
+
+    body.mobile-device nav.is-collapsible{
+      display:block;
+    }
+
+    body.mobile-device nav.is-collapsible .menu-links{
+      display:none;
+      width:100%;
+    }
+
+    body.mobile-device nav.is-collapsible.is-open .menu-links{
+      display:flex;
+      flex-wrap:wrap;
+    }
+    /* ✅ /HOZZÁADVA */
+
     /* Tablet */
     @media (max-width:768px){
       nav a{
@@ -595,6 +640,20 @@
         height:60px;
         font-size:28px;
       }
+
+      /* ✅ HOZZÁADVA: mobil/tablet nézetben lenyitható menü */
+      .menu-toggle{
+        display:flex;
+      }
+
+      nav{
+        display:block;
+      }
+
+      nav .menu-links{
+        width:100%;
+      }
+      /* ✅ /HOZZÁADVA */
     }
 
     /* Mobil */
@@ -724,15 +783,26 @@
   </div>
 </header>
 
-<nav>
-  <a href="ontozorendszer.html">Öntözőrendszer</a>
-  <a href="kertkarbantartas.html">Kertkarbantartás</a>
-  <a href="zoldfal.html">Zöldfal</a>
-  <!-- ✅ HOZZÁADVA: új menüpont -->
-  <a href="mezogazdasagi-ontozes.html">Mezőgazdasági öntözőrendszer</a>
+<nav id="mainNav">
+  <!-- ✅ HOZZÁADVA: mobilon lenyitható menü gomb -->
+  <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="menuLinks">
+    <span>Menü</span>
+    <span class="menu-icon">☰</span>
+  </button>
   <!-- ✅ /HOZZÁADVA -->
-  <a href="#idopont">Időpontfoglalás</a>
-  <a href="#kapcsolat">Kapcsolat</a>
+
+  <!-- ✅ HOZZÁADVA: a meglévő menüpontok külön blokkba kerültek, semmi nincs kivéve -->
+  <div class="menu-links" id="menuLinks">
+    <a href="ontozorendszer.html">Öntözőrendszer</a>
+    <a href="kertkarbantartas.html">Kertkarbantartás</a>
+    <a href="zoldfal.html">Zöldfal</a>
+    <!-- ✅ HOZZÁADVA: új menüpont -->
+    <a href="mezogazdasagi-ontozes.html">Mezőgazdasági öntözőrendszer</a>
+    <!-- ✅ /HOZZÁADVA -->
+    <a href="#idopont">Időpontfoglalás</a>
+    <a href="#kapcsolat">Kapcsolat</a>
+  </div>
+  <!-- ✅ /HOZZÁADVA -->
 </nav>
 
 <section class="hero">
@@ -866,6 +936,63 @@
     document.body.classList.remove('mobile-device', 'desktop-device');
     document.body.classList.add(isMobile ? 'mobile-device' : 'desktop-device');
     document.body.setAttribute('data-device', isMobile ? 'mobile' : 'desktop');
+
+    /* ✅ HOZZÁADVA: navigáció viselkedés mobilon / gépen */
+    const nav = document.getElementById('mainNav');
+    const toggle = document.getElementById('menuToggle');
+    const links = document.getElementById('menuLinks');
+
+    if(nav && toggle && links){
+      nav.classList.add('is-collapsible');
+
+      function setDesktopMenu(){
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        links.style.display = '';
+      }
+
+      function setMobileMenu(){
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+
+      if(isMobile){
+        setMobileMenu();
+      }else{
+        setDesktopMenu();
+      }
+
+      toggle.addEventListener('click', function(){
+        if(!document.body.classList.contains('mobile-device')) return;
+        const isOpen = nav.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      links.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          if(document.body.classList.contains('mobile-device')){
+            nav.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      window.addEventListener('resize', function(){
+        const mobileNow = window.matchMedia('(max-width: 768px)').matches;
+        if(mobileNow){
+          document.body.classList.remove('desktop-device');
+          document.body.classList.add('mobile-device');
+          document.body.setAttribute('data-device', 'mobile');
+          setMobileMenu();
+        }else{
+          document.body.classList.remove('mobile-device');
+          document.body.classList.add('desktop-device');
+          document.body.setAttribute('data-device', 'desktop');
+          setDesktopMenu();
+        }
+      });
+    }
+    /* ✅ /HOZZÁADVA */
   })();
 </script>
 <!-- ✅ /HOZZÁADVA -->
