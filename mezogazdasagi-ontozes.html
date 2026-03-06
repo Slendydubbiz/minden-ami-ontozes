@@ -467,6 +467,22 @@
       font-weight:900;
       color:var(--green-dark);
     }
+
+    /* ✅ HOZZÁADVA: fix díj mezők */
+    .calc-fixed{
+      background:#f7f7f7 !important;
+      color:#444;
+      cursor:not-allowed;
+    }
+    .calc-help{
+      margin:0 0 14px;
+      font-size:14px;
+      color:#333;
+      background:rgba(46,125,50,.06);
+      border:1px solid rgba(46,125,50,.14);
+      padding:10px 12px;
+      border-radius:10px;
+    }
     /* ✅ /HOZZÁADVA */
   </style>
 </head>
@@ -562,6 +578,8 @@
         </summary>
 
         <div class="details-body">
+          <p class="calc-help"><strong>Fix díjak:</strong> alap kiszállási díj 15 000 Ft, kilométerdíj 200 Ft/km.</p>
+
           <div class="calc-box">
             <div class="calc-grid">
               <div class="calc-field">
@@ -595,12 +613,12 @@
 
               <div class="calc-field">
                 <label for="kmPrice">Km díj (Ft/km)</label>
-                <input type="number" id="kmPrice" min="0" value="200" />
+                <input type="number" id="kmPrice" min="0" value="200" readonly class="calc-fixed" />
               </div>
 
               <div class="calc-field">
-                <label for="minCallout">Minimum kiszállási díj (Ft)</label>
-                <input type="number" id="minCallout" min="0" value="15000" />
+                <label for="minCallout">Alap kiszállási díj (Ft)</label>
+                <input type="number" id="minCallout" min="0" value="15000" readonly class="calc-fixed" />
               </div>
             </div>
 
@@ -865,20 +883,24 @@
         const unitPrice = Number(pipeSize.value) || 0;
         const pieces = Math.max(0, Number(pieceCount.value) || 0);
         const km = Math.max(0, Number(kmCount.value) || 0);
-        const kmRate = Math.max(0, Number(kmPrice.value) || 0);
-        const minTravel = Math.max(0, Number(minCallout.value) || 0);
+
+        const kmRate = 200;
+        const minTravel = 15000;
 
         const welding = unitPrice * pieces;
         const travelByKm = km * kmRate;
         const travel = km > 0 ? Math.max(travelByKm, minTravel) : 0;
         const total = welding + travel;
 
+        kmPrice.value = kmRate;
+        minCallout.value = minTravel;
+
         weldTotal.textContent = formatFt(welding);
         travelTotal.textContent = formatFt(travel);
         grandTotal.textContent = formatFt(total);
       }
 
-      [pipeSize, pieceCount, kmCount, kmPrice, minCallout].forEach(el => {
+      [pipeSize, pieceCount, kmCount].forEach(el => {
         el.addEventListener('input', calculate);
         el.addEventListener('change', calculate);
       });
