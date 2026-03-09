@@ -346,6 +346,22 @@
   </script>
   <!-- ✅ /HOZZÁADVA -->
 
+  <!-- ✅ HOZZÁADVA: külön kapcsolattartó Ifj. Czinke Attila -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Ifj. Czinke Attila",
+    "telephone":"+36501267124",
+    "email":"czinke.attila.ada@gmail.com",
+    "worksFor":{
+      "@type":"Organization",
+      "name":"Czinke Attila e.v."
+    }
+  }
+  </script>
+  <!-- ✅ /HOZZÁADVA -->
+
   <style>
     :root{
       --green:#2e7d32;
@@ -920,6 +936,38 @@
     }
     /* ✅ /HOZZÁADVA */
 
+    /* ✅ HOZZÁADVA: hero extra bizalmi blokk */
+    .hero-extra{
+      max-width:900px;
+      margin:18px auto 0;
+      background:#f8fff8;
+      border:1px solid rgba(46,125,50,.14);
+      border-radius:14px;
+      padding:16px;
+      box-shadow:0 2px 10px rgba(0,0,0,.05);
+    }
+
+    .hero-extra p{
+      margin:0 0 10px 0;
+      line-height:1.7;
+    }
+
+    .hero-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+      margin-top:10px;
+    }
+
+    /* ✅ HOZZÁADVA: második lebegő hívógomb */
+    .floating-call-second{
+      right:calc(var(--safe-right) + 78px);
+      animation:none;
+      background:#1b5e20;
+    }
+    /* ✅ /HOZZÁADVA */
+
     /* Tablet */
     @media (max-width:768px){
       nav a{
@@ -1051,6 +1099,21 @@
         bottom:max(14px, env(safe-area-inset-bottom));
         right:max(14px, env(safe-area-inset-right));
       }
+
+      /* ✅ HOZZÁADVA: hero extra mobil */
+      .hero-extra{
+        padding:14px;
+        text-align:left;
+      }
+
+      .hero-badges{
+        justify-content:flex-start;
+      }
+
+      .floating-call-second{
+        right:calc(max(14px, env(safe-area-inset-right)) + 70px);
+      }
+      /* ✅ /HOZZÁADVA */
     }
 
     /* Nagyon keskeny mobil */
@@ -1117,6 +1180,20 @@
   <p>Öntözőrendszer, zöldfal és mezőgazdasági cső hegesztés országos kiszállással. Kertkarbantartás Nyíregyházán és környékén.</p>
   <a class="button" href="tel:+36501267123">Hívás most</a>
   <a class="button" href="#idopont">Időpontfoglalás</a>
+
+  <!-- ✅ HOZZÁADVA: erősebb főoldali bizalmi blokk -->
+  <div class="hero-extra">
+    <p><strong>Öntözőrendszer telepítés, javítás, karbantartás és téliesítés országos kiszállással.</strong></p>
+    <p><strong>Kertkarbantartás Nyíregyházán és környékén</strong> – fűnyírás, metszés, kaszálás, kertgondozás, kertépítés.</p>
+
+    <div class="hero-badges">
+      <span class="pill">25 év tapasztalat</span>
+      <span class="pill">Országos kiszállás</span>
+      <span class="pill">Nyíregyháza és környéke</span>
+      <span class="pill">Gyors kapcsolatfelvétel</span>
+    </div>
+  </div>
+  <!-- ✅ /HOZZÁADVA -->
 </section>
 
 <section class="section">
@@ -1185,9 +1262,34 @@
       <a class="button" href="mezogazdasagi-ontozes.html">Megnézem a mezőgazdasági öntözést</a>
     </div>
     <!-- ✅ /HOZZÁADVA -->
-
   </div>
 </section>
+
+<!-- ✅ HOZZÁADVA: Miért válasszon minket blokk -->
+<section class="section" aria-label="Miért válasszon minket">
+  <div class="card">
+    <h2>Miért válasszon minket?</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Tapasztalat</h3>
+        <p>Több éves szakmai tapasztalattal vállalunk öntözőrendszer telepítést, kertkarbantartást, kertépítést és mezőgazdasági csőhegesztést.</p>
+      </div>
+      <div class="card">
+        <h3>Pontos munkavégzés</h3>
+        <p>A munkákat igényesen, precízen és megbízhatóan végezzük, hogy a rendszer és a kert hosszú távon is rendben működjön.</p>
+      </div>
+      <div class="card">
+        <h3>Széles szolgáltatási kör</h3>
+        <p>Egy helyen elérhető öntözés, kertgondozás, zöldfal karbantartás és mezőgazdasági öntözőrendszerhez kapcsolódó csőhegesztés.</p>
+      </div>
+      <div class="card">
+        <h3>Rugalmas kiszállás</h3>
+        <p>Kertkarbantartást Nyíregyházán és környékén, öntözéssel és egyéb kivitelezéssel kapcsolatos munkákat országosan is vállalunk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ✅ /HOZZÁADVA -->
   
 <!-- ✅ HOZZÁADVA: SEO barát GYIK szekció lenyitható fülön -->
 <!--<section class="section" aria-label="Gyakori kérdések">
@@ -1221,7 +1323,7 @@
       </div>
     </div>
   </details>
-</section>
+</section>-->
 <!-- ✅ /HOZZÁADVA -->
 
 <section id="idopont" class="section">
@@ -1252,6 +1354,37 @@
   </div>
 </section>
 
+<!-- ✅ HOZZÁADVA: extra kapcsolatfelvételi blokk -->
+<section class="section" aria-label="Gyors kapcsolatfelvétel">
+  <div class="card" style="text-align:center;">
+    <h2>Kérjen ajánlatot gyorsan</h2>
+    <p>Ha öntözőrendszer telepítésre, javításra, kertkarbantartásra vagy kertépítésre van szüksége, vegye fel velünk a kapcsolatot telefonon vagy üzenetben.</p>
+    <a class="button" href="tel:+36501267124">Hívás: Ifj. Czinke Attila</a>
+    <a class="button" href="#idopont">Ajánlatkérés / időpontfoglalás</a>
+  </div>
+</section>
+<!-- ✅ /HOZZÁADVA -->
+
+<!-- ✅ HOZZÁADVA: helyi SEO szekció -->
+<section class="section" aria-label="Helyi szolgáltatás Nyíregyházán">
+  <div class="card">
+    <h2>Öntözőrendszer és kertkarbantartás Nyíregyházán</h2>
+    <p>
+      Ha <strong>öntözőrendszer telepítés Nyíregyházán</strong>, <strong>öntözőrendszer javítás</strong>,
+      <strong>öntözőrendszer karbantartás</strong> vagy <strong>kertkarbantartás Nyíregyházán</strong> érdekel,
+      jó helyen jár. Vállalunk automata öntözőrendszer kivitelezést, tavaszi indítást, téliesítést,
+      valamint fűnyírást, metszést, kaszálást és általános kertgondozást.
+    </p>
+    <p>
+      Munkáink során fontos számunkra a megbízhatóság, a gyors kommunikáció és az igényes kivitelezés.
+      Kertkarbantartási munkákat elsősorban <strong>Nyíregyházán és környékén</strong> végzünk,
+      míg öntözőrendszerrel, zöldfallal és mezőgazdasági csőhegesztéssel kapcsolatos feladatokat
+      <strong>országos kiszállással</strong> is vállalunk.
+    </p>
+  </div>
+</section>
+<!-- ✅ /HOZZÁADVA -->
+
 <section id="kapcsolat" class="section">
   <h2>Kapcsolat</h2>
   <p><b>Név:</b> Czinke Attila e.v.</p>
@@ -1272,6 +1405,10 @@
 <footer>© Minden ami öntözés</footer>
 
 <a href="tel:+36501267123" class="floating-call" aria-label="Hívás">📞</a>
+
+<!-- ✅ HOZZÁADVA: második lebegő hívógomb -->
+<a href="tel:+36501267124" class="floating-call floating-call-second" aria-label="Hívás Ifj. Czinke Attila">📱</a>
+<!-- ✅ /HOZZÁADVA -->
 
 <!-- ✅ HOZZÁADVA: eszközfelismerés mobil / PC -->
 <script>
@@ -1434,5 +1571,3 @@
 
 </body>
 </html>
-
-
